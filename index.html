@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength</title>
+    <style>
+        *::after *::before{
+            box-sizing: border-box;
+        }
+        body{
+            text-align: center;
+            background-color: #170894;
+            color: hsl(246, 90%, 90%);
+        }
+        .strength-meter{
+            position: relative;
+            height: 1.5em;
+            width: 80%;
+            border: 0.2em solid #E0C41D;
+            border-radius: 2em;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .strength-meter::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: calc(1% * var(--strength, 0));
+            background-color: #947F00;
+            transition: width 200ms;
+        }
+
+        .password-input{
+            margin-top: 1rem;
+            width: 80%;
+            padding: .25em .75em;
+            background-color: #311DE0;
+            color: white;
+            border: 1px solid darkorchid;
+            outline: none;
+            text-align: center;
+            border-radius: .4em;
+        }
+
+        .password-input:focus{
+            border-color: #4E3BFF;
+
+        }
+
+        .reasons > * {
+            margin-top: .5em;
+        }
+    </style>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Password Strength Test</h1>
+    <div class="strength-meter" id="strength-meter"></div>
+    <input class="password-input" id="password-input" value="password" type="text" autofocus aria-labelledby="password">
+    <div id="reasons" class="reasons"></div>
+</body>
+</html>
